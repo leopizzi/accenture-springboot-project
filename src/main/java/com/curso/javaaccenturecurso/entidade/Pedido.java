@@ -18,7 +18,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.context.annotation.Profile;
-@Profile("dev")
+
+@Profile({"!prod"})
 @Entity
 @Table(name = "PRODUTO")
 public class Pedido implements Serializable {
@@ -37,10 +38,10 @@ public class Pedido implements Serializable {
 
 	@Column(name = "STATUS", nullable = true, precision = 15)
 	private String status;
-	
+
 	@Column(name = "VALOR_TOTAL", nullable = true, precision = 15)
 	private BigDecimal valorTotal;
-	
+
 	@Column(name = "QUANTIDADE", nullable = true, precision = 15)
 	private Integer quantidade;
 
@@ -108,5 +109,4 @@ public class Pedido implements Serializable {
 		this.produto = produto;
 	}
 
-	
 }

@@ -53,6 +53,4 @@ public class Produto implements Serializable  {
 		this.valor = valor;
 	}
 	
-	
-
 }
