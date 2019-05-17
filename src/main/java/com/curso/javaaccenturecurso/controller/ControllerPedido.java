@@ -1,5 +1,6 @@
 package com.curso.javaaccenturecurso.controller;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.curso.javaaccenturecurso.entidade.Pedido;
 import com.curso.javaaccenturecurso.service.ServicePedido;
 
+@Profile("dev")
 @RestController
 @RequestMapping(path = { "/pedido" })
 public class ControllerPedido {
