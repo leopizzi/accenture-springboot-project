@@ -17,11 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.context.annotation.Profile;
-
-@Profile({"!prod"})
 @Entity
-@Table(name = "PRODUTO")
+@Table(name = "PEDIDO")
 public class Pedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;

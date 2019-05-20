@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.curso.javaaccenturecurso.entidade.Cliente;
 
 @Repository
-public interface ClienteRepository extends CrudRepository<Cliente, Long> {
+public interface ClienteRepository extends CrudRepository<Cliente, String> {
 
 	Cliente findByDocumento(String documento);
 

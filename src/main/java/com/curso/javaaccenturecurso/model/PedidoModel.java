@@ -3,9 +3,6 @@ package com.curso.javaaccenturecurso.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.curso.javaaccenturecurso.entidade.Cliente;
-import com.curso.javaaccenturecurso.entidade.Produto;
-
 public class PedidoModel {
 	
 	private long numeroPedido;
@@ -13,8 +10,24 @@ public class PedidoModel {
 	private String status;
 	private BigDecimal valorTotal;
 	private Integer quantidade;
-	public Cliente cliente;
-	public Produto produto;
+	public String documentoCliente;
+	public long idProduto;
+
+	public String getDocumentoCliente() {
+		return documentoCliente;
+	}
+
+	public void setDocumentoCliente(String documentoCliente) {
+		this.documentoCliente = documentoCliente;
+	}
+
+	public long getIdProduto() {
+		return idProduto;
+	}
+
+	public void setIdProduto(long idProduto) {
+		this.idProduto = idProduto;
+	}
 
 	public long getNumeroPedido() {
 		return numeroPedido;
@@ -56,19 +69,4 @@ public class PedidoModel {
 		this.quantidade = quantidade;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
 }
