@@ -39,12 +39,12 @@ public class ServicePedido {
 		return response;
 	}
 
-	public Pedido updatePedido(PedidoModel pedidoModel) {
-		Pedido buscaPorId = repository.findByNumeroPedido(pedidoModel.getIdProduto());
+	public Pedido updatePedido(long id, PedidoModel pedidoModel) {
+		Pedido buscaPorId = repository.findByNumeroPedido(id);
 		Pedido response = new Pedido();
 		if (buscaPorId != null) {
 			response = conversaoPedido.convert(pedidoModel);
-			response.setNumeroPedido(pedidoModel.getNumeroPedido());
+			response.setNumeroPedido(id);
 			repository.save(response);
 		}
 		return response;

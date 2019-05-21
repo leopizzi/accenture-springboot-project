@@ -37,16 +37,16 @@ public class ControllerPedido {
 		Pedido response = service.criarPedido(pedido);
 		return response;
 	}
-	
+
 	@DeleteMapping(path = { "/{id}" })
 	public Pedido delete(@PathVariable long id) {
 		Pedido response = service.deletarProduto(id);
 		return response;
 	}
-	
-	@PutMapping
-	public Pedido update (@RequestBody PedidoModel pedido) {
-		Pedido response = service.updatePedido(pedido);
+
+	@PutMapping(path = { "/{id}" })
+	public Pedido update(@PathVariable long id, @RequestBody PedidoModel pedido) {
+		Pedido response = service.updatePedido(id, pedido);
 		return response;
 	}
 }

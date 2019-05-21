@@ -21,7 +21,7 @@ public class PedidoModelFromPedido {
 	public Pedido convert(PedidoModel pedidoModel) {
 		Pedido pedido = new Pedido();
 		pedido.setCliente(clienteRepository.findByDocumento(pedidoModel.getDocumentoCliente()));
-		pedido.setProduto(produtoRepository.findByIdProduto(pedidoModel.getNumeroPedido()));
+		pedido.setProduto(produtoRepository.findByIdProduto(pedidoModel.getIdProduto()));
 		pedido.setDataPedido(pedidoModel.getDataPedido());
 		pedido.setQuantidade(pedidoModel.getQuantidade());
 		pedido.setStatus(pedidoModel.getStatus());

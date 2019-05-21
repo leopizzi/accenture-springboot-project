@@ -4,14 +4,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class PedidoModel {
-	
-	private long numeroPedido;
-	public Date dataPedido;
-	private String status;
-	private BigDecimal valorTotal;
-	private Integer quantidade;
+
 	public String documentoCliente;
 	public long idProduto;
+	private Integer quantidade;
+	private BigDecimal valorTotal;
+	private String status;
+	public Date dataPedido;
 
 	public String getDocumentoCliente() {
 		return documentoCliente;
@@ -27,14 +26,6 @@ public class PedidoModel {
 
 	public void setIdProduto(long idProduto) {
 		this.idProduto = idProduto;
-	}
-
-	public long getNumeroPedido() {
-		return numeroPedido;
-	}
-
-	public void setNumeroPedido(long numeroPedido) {
-		this.numeroPedido = numeroPedido;
 	}
 
 	public Date getDataPedido() {
