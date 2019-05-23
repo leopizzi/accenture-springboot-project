@@ -6,9 +6,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.curso.javaaccenturecurso.converter.ClienteModelFromCliente;
 import com.curso.javaaccenturecurso.entidade.Cliente;
+import com.curso.javaaccenturecurso.exception.ValidationException;
 import com.curso.javaaccenturecurso.model.ClienteModel;
 import com.curso.javaaccenturecurso.repository.ClienteRepository;
-import com.curso.javaacenturecurso.exception.ValidationException;
 
 @Service
 public class ServiceCliente {
@@ -21,11 +21,11 @@ public class ServiceCliente {
 
 	public Iterable<Cliente> buscarTodosCliente() throws ValidationException {
 
-			Iterable<Cliente> listCliente = repository.findAll();
-			if (listCliente.iterator().hasNext()) {
-				throw new ValidationException("Deu errado.");
-			}
-			return listCliente;
+		Iterable<Cliente> listCliente = repository.findAll();
+		if (listCliente.iterator().hasNext()) {
+			throw new ValidationException("Deu errado");
+		}
+		return listCliente;
 	}
 
 	public Cliente buscarClientePeloDocumento(String id) {

@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.curso.javaaccenturecurso.entidade.Cliente;
+import com.curso.javaaccenturecurso.exception.ValidationException;
 import com.curso.javaaccenturecurso.model.ClienteModel;
 import com.curso.javaaccenturecurso.service.ServiceCliente;
-import com.curso.javaacenturecurso.exception.ValidationException;
 
 @RestController
 @RequestMapping({ "/cliente" })
