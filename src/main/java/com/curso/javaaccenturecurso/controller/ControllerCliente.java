@@ -1,5 +1,6 @@
 package com.curso.javaaccenturecurso.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.curso.javaaccenturecurso.entidade.Cliente;
 import com.curso.javaaccenturecurso.model.ClienteModel;
 import com.curso.javaaccenturecurso.service.ServiceCliente;
+import com.curso.javaacenturecurso.exception.ValidationException;
 
 @RestController
 @RequestMapping({ "/cliente" })
@@ -23,7 +25,7 @@ public class ControllerCliente {
 	private ServiceCliente service;
 
 	@GetMapping
-	public Iterable<Cliente> findAll() {
+	public Iterable<Cliente> findAll() throws ValidationException {
 		Iterable<Cliente> response = service.buscarTodosCliente();
 		return response;
 	}
@@ -51,4 +53,11 @@ public class ControllerCliente {
 		Cliente response = service.editarCliente(id, cliente);
 		return response;
 	}
+	
+	@GetMapping(path = {"/{id}/existe"})
+	public boolean existeCliente(@PathVariable("id") String id) {
+		return service.existeCliente(id);
+	}
 }
+
+

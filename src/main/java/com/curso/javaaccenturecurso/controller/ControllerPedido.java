@@ -17,6 +17,7 @@ import com.curso.javaaccenturecurso.service.ServicePedido;
 @RestController
 @RequestMapping({ "/pedido" })
 public class ControllerPedido {
+
 	@Autowired
 	private ServicePedido service;
 

@@ -2,11 +2,13 @@ package com.curso.javaaccenturecurso.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.curso.javaaccenturecurso.converter.ClienteModelFromCliente;
 import com.curso.javaaccenturecurso.entidade.Cliente;
 import com.curso.javaaccenturecurso.model.ClienteModel;
 import com.curso.javaaccenturecurso.repository.ClienteRepository;
+import com.curso.javaacenturecurso.exception.ValidationException;
 
 @Service
 public class ServiceCliente {
@@ -17,9 +19,13 @@ public class ServiceCliente {
 	@Autowired
 	private ClienteModelFromCliente clienteModelFromCliente;
 
-	public Iterable<Cliente> buscarTodosCliente() {
-		Iterable<Cliente> listCliente = repository.findAll();
-		return listCliente;
+	public Iterable<Cliente> buscarTodosCliente() throws ValidationException {
+
+			Iterable<Cliente> listCliente = repository.findAll();
+			if (listCliente.iterator().hasNext()) {
+				throw new ValidationException("Deu errado.");
+			}
+			return listCliente;
 	}
 
 	public Cliente buscarClientePeloDocumento(String id) {
@@ -48,6 +54,14 @@ public class ServiceCliente {
 			response = repository.save(conversaoClienteModelCliente);
 		}
 		return response;
+	}
+
+	public boolean existeCliente(String id) {
+		RestTemplate rest = new RestTemplate();
+		Cliente cliente = rest.getForObject("https://springboot-leo.herokuapp.com/cliente/" + id, Cliente.class);
+		if (cliente == null)
+			return false;
+		return true;
 	}
 
 }
