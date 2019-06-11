@@ -19,6 +19,5 @@ public class RestResponseEntityExcpetionHandler extends ResponseEntityExceptionH
         retorno.setMensagem(erroValidacao);
 
         return new ResponseEntity<Object>(retorno, HttpStatus.INTERNAL_SERVER_ERROR);
-
     }
 }

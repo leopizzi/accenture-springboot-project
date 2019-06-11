@@ -1,10 +1,13 @@
 package com.curso.javaaccenturecurso.entidade;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "PRODUTO")
+@Data
 public class Produto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -20,30 +23,4 @@ public class Produto implements Serializable {
 
     @Column(name = "VALOR", nullable = true, precision = 15)
     private long valor;
-
-
-    public long getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(long idProduto) {
-        this.idProduto = idProduto;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public long getValor() {
-        return valor;
-    }
-
-    public void setValor(long valor) {
-        this.valor = valor;
-    }
-
 }

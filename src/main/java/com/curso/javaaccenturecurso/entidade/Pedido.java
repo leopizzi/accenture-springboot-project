@@ -1,5 +1,7 @@
 package com.curso.javaaccenturecurso.entidade;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -7,6 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "PEDIDO")
+@Data
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,61 +33,4 @@ public class Pedido implements Serializable {
     private BigDecimal valorTotal;
     @Column(name = "QUANTIDADE", nullable = true, precision = 15)
     private Integer quantidade;
-
-    public long getNumeroPedido() {
-        return numeroPedido;
-    }
-
-    public void setNumeroPedido(long numeroPedido) {
-        this.numeroPedido = numeroPedido;
-    }
-
-    public Date getDataPedido() {
-        return dataPedido;
-    }
-
-    public void setDataPedido(Date dataPedido) {
-        this.dataPedido = dataPedido;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
-
 }
