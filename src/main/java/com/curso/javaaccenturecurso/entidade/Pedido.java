@@ -1,109 +1,90 @@
 package com.curso.javaaccenturecurso.entidade;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "PEDIDO")
 public class Pedido implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "DATA", nullable = false)
+    public Date dataPedido;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "DOCUMENTO")
+    public Cliente cliente;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ID_PRODUTO")
+    public Produto produto;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PEDIDO_NUMEROSEQUENCIALPEDIDO_GENERATOR")
+    @SequenceGenerator(sequenceName = "SQ_PEDIDO", allocationSize = 1, name = "PEDIDO_NUMEROSEQUENCIALPEDIDO_GENERATOR")
+    @Column(name = "NUMERO", nullable = false, precision = 15)
+    private long numeroPedido;
+    @Column(name = "STATUS", nullable = true, precision = 15)
+    private String status;
+    @Column(name = "VALOR_TOTAL", nullable = true, precision = 15)
+    private BigDecimal valorTotal;
+    @Column(name = "QUANTIDADE", nullable = true, precision = 15)
+    private Integer quantidade;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PEDIDO_NUMEROSEQUENCIALPEDIDO_GENERATOR")
-	@SequenceGenerator(sequenceName = "SQ_PEDIDO", allocationSize = 1, name = "PEDIDO_NUMEROSEQUENCIALPEDIDO_GENERATOR")
-	@Column(name = "NUMERO", nullable = false, precision = 15)
-	private long numeroPedido;
+    public long getNumeroPedido() {
+        return numeroPedido;
+    }
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "DATA", nullable = false)
-	public Date dataPedido;
+    public void setNumeroPedido(long numeroPedido) {
+        this.numeroPedido = numeroPedido;
+    }
 
-	@Column(name = "STATUS", nullable = true, precision = 15)
-	private String status;
+    public Date getDataPedido() {
+        return dataPedido;
+    }
 
-	@Column(name = "VALOR_TOTAL", nullable = true, precision = 15)
-	private BigDecimal valorTotal;
+    public void setDataPedido(Date dataPedido) {
+        this.dataPedido = dataPedido;
+    }
 
-	@Column(name = "QUANTIDADE", nullable = true, precision = 15)
-	private Integer quantidade;
+    public String getStatus() {
+        return status;
+    }
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "DOCUMENTO")
-	public Cliente cliente;
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ID_PRODUTO")
-	public Produto produto;
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
 
-	public long getNumeroPedido() {
-		return numeroPedido;
-	}
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
 
-	public void setNumeroPedido(long numeroPedido) {
-		this.numeroPedido = numeroPedido;
-	}
+    public Integer getQuantidade() {
+        return quantidade;
+    }
 
-	public Date getDataPedido() {
-		return dataPedido;
-	}
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
 
-	public void setDataPedido(Date dataPedido) {
-		this.dataPedido = dataPedido;
-	}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public Produto getProduto() {
+        return produto;
+    }
 
-	public BigDecimal getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(BigDecimal valorTotal) {
-		this.valorTotal = valorTotal;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 
 }

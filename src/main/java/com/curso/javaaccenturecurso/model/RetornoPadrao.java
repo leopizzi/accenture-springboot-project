@@ -2,22 +2,22 @@ package com.curso.javaaccenturecurso.model;
 
 public class RetornoPadrao {
 
-	private int codigo;
-	private String mensagem;
+    private int codigo;
+    private String mensagem;
 
-	public int getCodigo() {
-		return codigo;
-	}
+    public int getCodigo() {
+        return codigo;
+    }
 
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
-	public String getMensagem() {
-		return mensagem;
-	}
+    public String getMensagem() {
+        return mensagem;
+    }
 
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
-	}
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
 }
